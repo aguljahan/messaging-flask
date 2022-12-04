@@ -7,6 +7,7 @@ socketio = SocketIO(application)
 
 @application.route('/')
 def home():
+    print('here')
     return render_template('index.html')
 
 

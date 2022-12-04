@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title> Messenger </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"></script>
 </head>
 <body>
 <script type="text/javascript">
     $(document).ready(function(){
         var socket = io.connect('http://messagingflask-env.eba-h47bja3v.us-east-1.elasticbeanstalk.com/')
-        //var socket = io.connect('https://localhost:5000')
+        //var socket = io.connect("http://127.0.0.1:5000")
         socket.on('connect', function(){
             socket.send('User Connected');
         });
@@ -19,7 +19,7 @@
             $('#messages').append($('<p>').text(data));
         });
 
-        $('sendButton').on('click', function(){
+        $('#sendButton').on('click', function(){
             socket.send($('#username').val() + ': ' + $('#message').val());
             $('#message').val('');
         });
